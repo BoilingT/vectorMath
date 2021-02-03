@@ -1,7 +1,0 @@
-﻿  main.cpp
-C:\Users\to9751\Documents\Coding\c++\math\main.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\to9751\Documents\Coding\c++\math\vec.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\to9751\Documents\Coding\c++\math\vec.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\to9751\Documents\Coding\c++\math\vec.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\to9751\Documents\Coding\c++\math\main.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  math.vcxproj -> C:\Users\to9751\Documents\Coding\c++\math\Debug\math.exe

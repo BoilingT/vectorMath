@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/// <summary>
+/// Vector containing x, y, z, w values,
+/// When using operators the w value will not change
+/// </summary>
 class Vec4 {
 public:
 	float x = 0, y = 0, z = 0, w = 0;
@@ -16,10 +20,65 @@ public:
 		w = _w;
 	}
 
-	static Vec4 add(Vec4 vec1, Vec4 vec2) {
-		Vec4 result = { vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z, vec1.w + vec2.w };
+	Vec4() {
+		x, y, z, w = 0;
+	}
+
+#pragma region operators
+
+
+
+	auto operator / (float other) {
+		Vec4 vec;
+		vec.x = x / other;
+		vec.y = y / other;
+		vec.z = z / other;
+		return vec;
+	}
+
+	auto operator * (float other) {
+		Vec4 vec;
+		vec.x = x * other;
+		vec.y = y * other;
+		vec.z = z * other;
+		return vec;
+	}
+
+	auto operator + (float other) {
+		Vec4 vec;
+		vec.x = x + other;
+		vec.y = y + other;
+		vec.z = z + other;
+		return vec;
+	}
+
+	//
+
+	auto operator / (Vec4 other) {
+		Vec4 vec;
+		vec.x = x / other.x;
+		vec.y = y / other.y;
+		vec.z = z / other.z;
+		return vec;
+	}
+
+	auto operator * (Vec4 other) {
+		Vec4 vectorProducts = { x * other.x, y * other.y, z * other.z, w };
+
+		float result = vectorProducts.x + vectorProducts.y + vectorProducts.z;
+
 		return result;
 	}
+
+	auto operator + (Vec4 other) {
+		Vec4 vec;
+		vec.x = x + other.x;
+		vec.y = y + other.y;
+		vec.z = z + other.z;
+		return vec;
+	}
+
+#pragma endregion
 
 	string toString() {
 
@@ -29,6 +88,10 @@ public:
 	}
 };
 
+
+/// <summary>
+/// Vector containing x, y, z values
+/// </summary>
 class Vec3 {
 public:
 	float x = 0, y = 0, z = 0;
@@ -38,33 +101,91 @@ public:
 		z = _z;
 	}
 
+	Vec3() {
+		x, y, z = 0;
+	}
+
+	/// <summary>
+	/// Returns the magnitude/size of the vector
+	/// </summary>
+	/// <returns>float</returns>
+	float abs() {
+		float result = sqrt(
+			(powf(x, 2) + powf(y, 2) + powf(z, 2))
+		);
+		return result;
+	}
+
+	/// <summary>
+	/// Returns the vector values
+	/// </summary>
+	/// <returns>string</returns>
 	string toString() {
 
 		string result = "{" + to_string(x) + " " + to_string(y) + " " + to_string(z) + "}";
 
 		return result;
 	}
+
+	//Operators
+#pragma region operators
+
+
+
+	auto operator / (float other) {
+		Vec3 vec;
+		vec.x = x / other;
+		vec.y = y / other;
+		vec.z = z / other;
+		return vec;
+	}
+
+	auto operator * (float other) {
+		Vec3 vec;
+		vec.x = x * other;
+		vec.y = y * other;
+		vec.z = z * other;
+		return vec;
+	}
+
+	auto operator + (float other) {
+		Vec3 vec;
+		vec.x = x + other;
+		vec.y = y + other;
+		vec.z = z + other;
+		return vec;
+	}
+
+	//
+
+	auto operator / (Vec3 other) {
+		Vec3 vec;
+		vec.x = x / other.x;
+		vec.y = y / other.y;
+		vec.z = z / other.z;
+		return vec;
+	}
+
+	auto operator * (Vec3 other) {
+		Vec3 vectorProducts = { x * other.x, y * other.y, z * other.z };
+
+		float result = vectorProducts.x + vectorProducts.y + vectorProducts.z;
+
+		return result;
+	}
+
+	auto operator + (Vec3 other) {
+		Vec3 vec;
+		vec.x = x + other.x;
+		vec.y = y + other.y;
+		vec.z = z + other.z;
+		return vec;
+	}
+
+#pragma endregion
+
+	
 };
-
-Vec3 add(Vec3 vec1, Vec3 vec2) {
-	Vec3 result = { vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z };
-	return result;
-}
-
-float vectorProduct(Vec3 vec1, Vec3 vec2) {
-	Vec3 vectorProducts = { vec1.x * vec2.x, vec1.y * vec2.y, vec1.z * vec2.z };
-
-	float result = vectorProducts.x + vectorProducts.y + vectorProducts.z;
-
-	return result;
-}
-
-float magnitude(Vec3 vec1) {
-	float result = sqrt(
-		(powf(vec1.x, 2)+ powf(vec1.y, 2) + powf(vec1.z, 2))
-	);
-	return result;
-}
 
 //Find the angle between two vectors
 float dotProduct(Vec3 u, Vec3 v) {
@@ -79,9 +200,8 @@ float dotProduct(Vec3 u, Vec3 v) {
 		x = acos(a/b)
 		
 	*/
-	float result = 0;
-	float uMag = magnitude(u), vMag = magnitude(v);
-	float quota = vectorProduct(u, v) / (uMag * vMag);
+	float uMag = u.abs(), vMag = v.abs();
+	float quota = (u * v) / (uMag * vMag);
 	float x = acosf(quota);
 
 	return x;

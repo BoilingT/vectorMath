@@ -1,2 +1,0 @@
-C:\Users\to9751\Documents\Coding\c++\math\Debug\math.exe
-C:\Users\to9751\Documents\Coding\c++\math\Debug\math.pdb
