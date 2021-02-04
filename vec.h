@@ -33,6 +33,7 @@ public:
 		vec.x = x / other;
 		vec.y = y / other;
 		vec.z = z / other;
+		vec.w = w / other;
 		return vec;
 	}
 
@@ -41,6 +42,8 @@ public:
 		vec.x = x * other;
 		vec.y = y * other;
 		vec.z = z * other;
+		vec.w = w * other;
+
 		return vec;
 	}
 
@@ -49,6 +52,8 @@ public:
 		vec.x = x + other;
 		vec.y = y + other;
 		vec.z = z + other;
+		vec.w = w + other;
+
 		return vec;
 	}
 
@@ -59,13 +64,15 @@ public:
 		vec.x = x / other.x;
 		vec.y = y / other.y;
 		vec.z = z / other.z;
+		vec.w = w / other.w;
+
 		return vec;
 	}
 
 	auto operator * (Vec4 other) {
-		Vec4 vectorProducts = { x * other.x, y * other.y, z * other.z, w };
+		Vec4 vectorProducts = { x * other.x, y * other.y, z * other.z, w * other.w };
 
-		float result = vectorProducts.x + vectorProducts.y + vectorProducts.z;
+		float result = vectorProducts.x + vectorProducts.y + vectorProducts.z + vectorProducts.w;
 
 		return result;
 	}
@@ -75,6 +82,7 @@ public:
 		vec.x = x + other.x;
 		vec.y = y + other.y;
 		vec.z = z + other.z;
+		vec.w = w + other.w;
 		return vec;
 	}
 
@@ -82,7 +90,7 @@ public:
 
 	string toString() {
 
-		string result = "{" + to_string(x) + " " + to_string(y) + " " + to_string(z) + " " + to_string(w) + "}";
+		string result = "{" + to_string(x) + ", " + to_string(y) + ", " + to_string(z) + ", " + to_string(w) + "}";
 
 		return result;
 	}
@@ -122,7 +130,7 @@ public:
 	/// <returns>string</returns>
 	string toString() {
 
-		string result = "{" + to_string(x) + " " + to_string(y) + " " + to_string(z) + "}";
+		string result = "{" + to_string(x) + ", " + to_string(y) + ", " + to_string(z) + "}";
 
 		return result;
 	}
