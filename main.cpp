@@ -5,8 +5,8 @@
 using namespace std;
 
 int main() {
-	Vec3 v1(3, 4, 0);
-	Vec3 v2(5, 12, 0);
+	Vec3 v1(1, 2, 3);
+	Vec3 v2(2, 4, 2);
 
 	cout << "Vector product: " << v1*v2 << endl;
 	cout << "Magnitude: " << v1.abs() << endl;

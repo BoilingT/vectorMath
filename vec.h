@@ -8,11 +8,15 @@ using namespace std;
 
 /// <summary>
 /// Vector containing x, y, z, w values,
-/// When using operators the w value will not change
 /// </summary>
+/// <returns>4D vector</returns>
 class Vec4 {
 public:
 	float x = 0, y = 0, z = 0, w = 0;
+	Vec4() {
+		x, y, z, w = 0;
+	}
+
 	Vec4(float _x, float _y, float _z, float _w) {
 		x = _x;
 		y = _y;
@@ -20,13 +24,7 @@ public:
 		w = _w;
 	}
 
-	Vec4() {
-		x, y, z, w = 0;
-	}
-
 #pragma region operators
-
-
 
 	auto operator / (float other) {
 		Vec4 vec;
@@ -100,17 +98,18 @@ public:
 /// <summary>
 /// Vector containing x, y, z values
 /// </summary>
+/// <returns>3D vector</returns>
 class Vec3 {
 public:
 	float x = 0, y = 0, z = 0;
+	Vec3() {
+		x, y, z = 0;
+	}
+
 	Vec3(float _x, float _y, float _z) {
 		x = _x;
 		y = _y;
 		z = _z;
-	}
-
-	Vec3() {
-		x, y, z = 0;
 	}
 
 	/// <summary>
@@ -123,7 +122,7 @@ public:
 		);
 		return result;
 	}
-
+	
 	/// <summary>
 	/// Returns the vector values
 	/// </summary>
@@ -134,11 +133,9 @@ public:
 
 		return result;
 	}
-
+	
 	//Operators
 #pragma region operators
-
-
 
 	auto operator / (float other) {
 		Vec3 vec;
