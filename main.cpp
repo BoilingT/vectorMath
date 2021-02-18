@@ -1,28 +1,40 @@
 #include <iostream>
-#include "vec.h";
-
+#include "matrixMath.h"
+#include <list>
 # define M_PI           3.14159265358979323846  /* pi */
 using namespace std;
 
 int main() {
-	Vec3 v1(3, 4, 0);
-	Vec3 v2(5, 12, 0);
+	//cout << list[0] << endl;
+	float angle = 0;
+	//std::list<float[3]> myList = { {0,0,0} };
+	float myList[][3] = {
+		{1, 2, 3},
+		{4, 5, 6}//,
+		//{7, 8, 9}
+	};
+	matrix<3, 2> myMatrix(myList);
 
-	cout << "Vector product: " << v1*v2 << endl;
-	cout << "Magnitude: " << v1.abs() << endl;
-	cout << "Magnitude #2: " << v2.abs() << endl;
-	cout << "Dot product (degrees): " << dotProduct(v1, v2)*(180/M_PI) << endl;
-	cout << "Dot product (radians): " << dotProduct(v1, v2) << endl;
+	//column x rows
+	matrix<1, 3> multMatrix(new float[][1]{
+		{1},
+		{1},
+		{1}
+		});
 
-	Vec3 v3 = (v1 / 3);
-	cout <<  v3.toString() << endl;
+	cout << multMatrix.toString() << endl;
+	cout << myMatrix.mult(multMatrix).toString() << endl;
+	//cout << multMatrix.mult(myMatrix).toString() << endl;
 
-	Vec4 vec;
-	for (int i = 0; i < 10; i++)
-	{
-		vec = vec + 1;
-		cout << vec.toString() << " = " << Vec3(vec.x, vec.y, vec.z).abs() << endl;
-	}
+	/*Vec3<3> rotationMatrix =
+	{ new float[]
+		{
+		cos(angle), -sin(angle), 0.f,
+		sin(angle), cos(angle), 0.f,
+		0.f, 0.f, 1.f
+	} 
+	};*/
+	
 	
 	system("PAUSE");
 	return 0;
